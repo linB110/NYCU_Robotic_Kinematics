@@ -39,16 +39,15 @@ def rotation_martrix(rx, ry, rz, angle_unit_rad = True):
 def Rmat_to_theta(rot_matrix):
     
     # calculate Euler angle using atan2 and tranform unit from radian to degree
-    rx = m.atan2(rot_matrix[2][1], rot_matrix[2][2]) / Deg2Rad
+    psi = m.atan2(rot_matrix[1][2],rot_matrix[0][2])
+    cta = m.atan2( m.cos(psi)*rot_matrix[0][2] + m.sin(psi)*rot_matrix[1][2]  , rot_matrix[2][2] ) 
+    phi = m.atan2( -m.sin(psi)*rot_matrix[0][0] + m.cos(psi)*rot_matrix[1][0]  , -m.sin(psi)*rot_matrix[0][1] + m.cos(psi)*rot_matrix[1][1] ) 
+    psi = m.degrees(psi)
+    cta = m.degrees(cta)
+    phi = m.degrees(phi)
     
-    r32 = rot_matrix[2][1]
-    r33 = rot_matrix[2][2]
-    ry = m.atan2(-rot_matrix[2][0], m.sqrt(m.pow(r32, 2) + m.pow(r33, 2))) / Deg2Rad
-    
-    rz = m.atan2(rot_matrix[1][0], rot_matrix[0][0]) / Deg2Rad
-    
-    # return Euler angle in x, y, z order and in degree
-    return rx, ry, rz
+    # return Euler angle in φ, θ, ψ order and in degree
+    return psi, cta, phi
 
 def DHmodel_to_transformation(joint_angle, alpha, depth, link_length, angle_unit_rad = True, length_unit_mm = True):
     
