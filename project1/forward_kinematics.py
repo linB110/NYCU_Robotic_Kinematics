@@ -12,30 +12,6 @@ def cos(theta):
 def sin(theta):
     return m.sin(theta)
 
-def rotation_martrix(rx, ry, rz, angle_unit_rad = True):
-    
-    # degree to radian
-    if not angle_unit_rad :
-        rx *= Deg2Rad
-        ry *= Deg2Rad
-        rz *= Deg2Rad
-    
-    # calculate individual rotation matrix 
-    rot_x = np.array([[1, 0, 0],
-                      [0, cos(rx), -sin(rx)],
-                      [0, sin(rx), cos(rx)]])
-    
-    rot_y = np.array([[cos(ry), 0, sin(ry)],
-                      [0, 1, 0],
-                      [-sin(ry), 0, cos(ry)]])
-
-    rot_z = np.array([[cos(rz), -sin(rz), 0],
-                      [sin(rz), cos(rz), 0],
-                      [0, 0, 1]])
-
-    # return z-y-x rotation matrix
-    return rot_z @ rot_y @ rot_x
-
 def Rmat_to_theta(rot_matrix):
     
     # calculate Euler angle using atan2 and tranform unit from radian to degree
@@ -75,5 +51,3 @@ def DHmodel_to_transformation(joint_angle, alpha, depth, link_length, angle_unit
 #J3 = DHmodel_to_transformation(1.588, 1.571, 0, 0)
 
 #print(J1@J2@J3)
-
-#print(rotation_martrix(-51.1183, 96.7177, 91.1183, angle_unit_rad=False))
