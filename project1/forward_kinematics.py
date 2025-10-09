@@ -43,7 +43,7 @@ def Rmat_to_theta(rot_matrix):
     theta = m.atan2( m.cos(psi)*rot_matrix[0][2] + m.sin(psi)*rot_matrix[1][2]  , rot_matrix[2][2] ) 
     phi = m.atan2( -m.sin(psi)*rot_matrix[0][0] + m.cos(psi)*rot_matrix[1][0]  , -m.sin(psi)*rot_matrix[0][1] + m.cos(psi)*rot_matrix[1][1] ) 
     psi = m.degrees(psi)
-    theta = m.degrees(cta)
+    theta = m.degrees(theta)
     phi = m.degrees(phi)
     
     # return Euler angle in φ, θ, ψ order and in degree
