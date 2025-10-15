@@ -5,6 +5,7 @@ import scipy.linalg
 from scipy.optimize import fsolve
 
 Inch2mm = 25.4
+
 Deg2Rad = m.pi/180
 
 def cos(theta):
