@@ -2,7 +2,6 @@
 
 ### Project 1 : solving forward and inverse kinematics
 
-file : 
 
 forward_kinematics.py : solving forward kinematics
 
